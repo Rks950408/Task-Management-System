@@ -5,8 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import List, Optional
 
-from . import crud, models, schemas, auth
-from .database import engine, get_db
+import crud, models, schemas, auth
+from database import engine, get_db
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)

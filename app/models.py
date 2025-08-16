@@ -2,7 +2,7 @@ from sqlalchemy import Column, Integer, String, Text, DateTime, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 import enum
-from .database import Base
+from database import Base
 
 class TaskStatus(str, enum.Enum):
     PENDING = "Pending"

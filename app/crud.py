@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import and_
-from . import models, schemas
-from .auth import get_password_hash
+import models, schemas
+from auth import get_password_hash
 from typing import List, Optional
 
 # User CRUD operations
