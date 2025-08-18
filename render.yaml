@@ -5,6 +5,8 @@ services:
     plan: free
     autoDeploy: true
     healthCheckPath: /
+    buildCommand: docker build -t task-management-api .
+    startCommand: docker run -p $PORT:8000 -e DATABASE_URL=$DATABASE_URL task-management-api
     envVars:
       - key: DATABASE_URL
         fromDatabase:
