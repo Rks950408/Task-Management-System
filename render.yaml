@@ -1,12 +1,13 @@
 services:
   - type: web
     name: task-management-api
-    env: docker
+    env: python
     plan: free
     autoDeploy: true
     healthCheckPath: /
-    buildCommand: docker build -t task-management-api .
-    startCommand: docker run -p $PORT:8000 -e DATABASE_URL=$DATABASE_URL task-management-api
+    buildCommand: pip install -r requirements-docker.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    pythonVersion: "3.12.0"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
