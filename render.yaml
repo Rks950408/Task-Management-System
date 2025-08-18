@@ -1,13 +1,10 @@
 services:
   - type: web
     name: task-management-api
-    env: python
+    env: docker
     plan: free
     autoDeploy: true
-    buildCommand: pip install --no-cache-dir -r requirements.txt
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
-    pythonVersion: "3.13.4"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
