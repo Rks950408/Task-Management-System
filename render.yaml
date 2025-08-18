@@ -10,8 +10,6 @@ services:
         fromDatabase:
           name: task-management-db
           property: connectionString
-      - key: PORT
-        value: 8000
 
 databases:
   - name: task-management-db
