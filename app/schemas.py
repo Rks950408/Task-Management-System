@@ -17,7 +17,7 @@ class User(UserBase):
     created_at: datetime
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 # Task schemas
 class TaskBase(BaseModel):
@@ -43,7 +43,7 @@ class Task(TaskBase):
     owner: User
 
     class Config:
-        from_attributes = True
+        orm_mode = True
 
 # Token schemas
 class Token(BaseModel):
