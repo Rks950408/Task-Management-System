@@ -7,9 +7,9 @@ import os
 # Database URL: Prefer env var (Render/production), fallback to local SQLite
 SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./task_management.db")
 
-# Render sets DATABASE_URL like 'postgres://', which SQLAlchemy expects as 'postgresql+psycopg2://'
+# Render sets DATABASE_URL like 'postgres://', which SQLAlchemy expects as 'postgresql+pg8000://'
 if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
-	SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+	SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql+pg8000://", 1)
 
 # Create database engine with driver-specific options
 if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
