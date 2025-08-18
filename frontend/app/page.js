@@ -1,3 +1,5 @@
+// Task Management System - Frontend Application
+// This will trigger GitHub Actions deployment
 "use client"
 
 import { useState, useEffect } from "react"
