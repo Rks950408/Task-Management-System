@@ -5,7 +5,6 @@ services:
     plan: free
     autoDeploy: true
     healthCheckPath: /
-    dockerfilePath: ./Dockerfile
     envVars:
       - key: DATABASE_URL
         fromDatabase:
