@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional, List
 from datetime import datetime
-from models import TaskStatus
+from app.models import TaskStatus
 
 # User schemas
 class UserBase(BaseModel):

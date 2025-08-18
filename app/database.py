@@ -2,13 +2,23 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# SQLite database URL
-SQLALCHEMY_DATABASE_URL = "sqlite:///./task_management.db"
+import os
 
-# Create database engine
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
+# Database URL: Prefer env var (Render/production), fallback to local SQLite
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./task_management.db")
+
+# Render sets DATABASE_URL like 'postgres://', which SQLAlchemy expects as 'postgresql+psycopg2://'
+if SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+	SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql+psycopg2://", 1)
+
+# Create database engine with driver-specific options
+if SQLALCHEMY_DATABASE_URL.startswith("sqlite"):
+	engine = create_engine(
+		SQLALCHEMY_DATABASE_URL,
+		connect_args={"check_same_thread": False},
+	)
+else:
+	engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 # Create SessionLocal class
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
