@@ -7,6 +7,7 @@ services:
     buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /
+    pythonVersion: "3.12.0"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
